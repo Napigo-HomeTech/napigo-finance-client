@@ -28,8 +28,14 @@ const ButtonSizeClassMap = {
   md: "btn-md",
   lg: "btn-lg",
 };
+const ContentAlignMentClassMap = {
+  left: "justify-start",
+  center: "justify-center",
+  right: "justify-end",
+};
 type Sizing = "sm" | "md" | "lg";
 type IconPosition = "left" | "right";
+type ContentAlignment = "right" | "center" | "left";
 
 type Color =
   | "base"
@@ -59,6 +65,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   renderIcon?: () => JSX.Element | ReactElement;
   iconPosition?: IconPosition;
   variant?: Variant;
+  contentAlignment?: ContentAlignment;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
@@ -70,6 +77,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     renderIcon = () => {},
     iconPosition = "left",
     variant = "normal",
+    contentAlignment = "center",
     className,
     ...buttonProps
   } = props;
@@ -77,8 +85,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const classes = useMemo(() => {
     return `btn gap-2 ${outline ? "btn-outline" : ""} ${ButtonSizeClassMap[size]} ${
       ButtonColorClassMap[color]
-    } ${ButtonVariantClassMap[variant]}`;
-  }, [outline, size, color, variant]);
+    } ${ButtonVariantClassMap[variant]} ${ContentAlignMentClassMap[contentAlignment]} ${className}`;
+  }, [outline, size, color, variant, contentAlignment, className]);
 
   return (
     <button {...buttonProps} className={classes}>

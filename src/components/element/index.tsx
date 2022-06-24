@@ -6,3 +6,5 @@ export * from "./input-select/InputSelect";
 export * from "./select-button/SelectButton";
 export * from "./text-input/TextField";
 export * from "./text-input/CurrencyField";
+export * from "./toggle/Toggle";
+export * from "./popper/MenuPopper";
