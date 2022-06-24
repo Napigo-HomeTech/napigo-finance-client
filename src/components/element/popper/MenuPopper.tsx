@@ -1,15 +1,22 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Menu } from "@headlessui/react";
 import { Button } from "../button/Button";
 import { FaBed, FaSalesforce } from "react-icons/fa";
 
-type MenuPopperProps = {};
+type MenuPopperProps = {
+  renderToggler?: () => ReactElement;
+};
 export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
+  const { renderToggler } = props;
   return (
     <Menu as="div" className={"relative"}>
       <div>
         <Menu.Button>
-          <Button id="menu popper" role={"menubar"} text="Menu Popper" color="primary" outline />
+          {renderToggler ? (
+            <>{renderToggler()}</>
+          ) : (
+            <Button text="Menu Popper" color="primary" outline />
+          )}
         </Menu.Button>
       </div>
 

@@ -11,6 +11,7 @@ import {
   Toggle,
   MenuPopper,
 } from "components/element";
+import { FaAdjust } from "react-icons/fa";
 
 const myOptions = [
   {
@@ -27,7 +28,11 @@ function App() {
     <div className="flex flex-col gap-4 w-[400px] mx-auto h-screen items-center justify-center border p-3">
       {/* <Button text="Hello World" variant="block" />
       <AvatarButton ringColor="primary" size="sm" /> */}
-      <MenuPopper />
+      <MenuPopper
+        renderToggler={() => (
+          <Button size="md" color="ghost" variant="square" renderIcon={() => <FaAdjust />} />
+        )}
+      />
       {/* <Avatar withRing={false} size="2xl" />
       <Checkbox label="Please Login" color="accent" />
       <InputSelect placeholder="Help me" options={myOptions} defaultSelected={myOptions[0]} />
