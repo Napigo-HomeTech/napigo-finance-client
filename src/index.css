@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+// Applying Base style to all Web Component
+@layer base {
+}
+
+// Apply to a specific Component styling
+@layer components {
+}
