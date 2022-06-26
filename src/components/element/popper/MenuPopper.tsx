@@ -1,17 +1,21 @@
-import React, { ReactElement } from "react";
+import React, { Fragment, ReactElement } from "react";
+import { uniqueId } from "lodash";
 import { Menu } from "@headlessui/react";
 import { Button } from "../button/Button";
-import { FaBed, FaSalesforce } from "react-icons/fa";
+
+export type ItemComponent = (active: boolean) => ReactElement;
 
 type MenuPopperProps = {
   renderToggler?: () => ReactElement;
+  renderItems: ItemComponent[];
+  popperClassnames?: string;
 };
 export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
-  const { renderToggler } = props;
+  const { renderToggler, renderItems, popperClassnames } = props;
   return (
-    <Menu as="div" className={"relative"}>
-      <div>
-        <Menu.Button>
+    <Menu as="div" className={`relative ${popperClassnames}`}>
+      <div className="flex w-[inherit]">
+        <Menu.Button as="div" className={"w-[inherit]"}>
           {renderToggler ? (
             <>{renderToggler()}</>
           ) : (
@@ -25,40 +29,11 @@ export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
           "absolute z-50 right-0 mt-2 w-56 origin-top-right bg-base-300 rounded shadow-2xl overflow-auto p-2"
         }
       >
-        <Menu.Item>
-          {({ active }) => (
-            <div
-              className={`${active ? "bg-primary" : ""} rounded min-h-[20px] flex items-center p-0`}
-            >
-              <Button
-                size="sm"
-                color="ghost"
-                variant="block"
-                text="Profile"
-                textUpperCase={false}
-                contentAlignment="left"
-                renderIcon={() => <FaBed />}
-              />
-            </div>
-          )}
-        </Menu.Item>
-        <Menu.Item>
-          {({ active }) => (
-            <div
-              className={`${active ? "bg-primary" : ""} rounded min-h-[20px] flex items-center p-0`}
-            >
-              <Button
-                size="sm"
-                color="ghost"
-                variant="block"
-                text="User Settings"
-                textUpperCase={false}
-                contentAlignment="left"
-                renderIcon={() => <FaSalesforce />}
-              />
-            </div>
-          )}
-        </Menu.Item>
+        {renderItems.map((item: ItemComponent) => (
+          <Menu.Item key={uniqueId()}>
+            {({ active }) => <Fragment>{item(active)}</Fragment>}
+          </Menu.Item>
+        ))}
       </Menu.Items>
     </Menu>
   );

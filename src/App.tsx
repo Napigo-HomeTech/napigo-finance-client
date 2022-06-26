@@ -11,7 +11,7 @@ import {
   Toggle,
   MenuPopper,
 } from "components/element";
-import { FaAdjust } from "react-icons/fa";
+import { FaAdjust, FaBed, FaCog, FaDoorOpen } from "react-icons/fa";
 
 const myOptions = [
   {
@@ -28,11 +28,58 @@ function App() {
     <div className="flex flex-col gap-4 w-[400px] mx-auto h-screen items-center justify-center border p-3">
       <Button text="Hello World" variant="block" />
       <AvatarButton ringColor="primary" size="sm" />
+
       <MenuPopper
+        popperClassnames=""
         renderToggler={() => (
-          <Button size="md" color="ghost" variant="square" renderIcon={() => <FaAdjust />} />
+          <Button
+            size="md"
+            color="primary"
+            variant="normal"
+            text="Hello"
+            renderIcon={() => <FaAdjust />}
+          />
         )}
+        renderItems={[
+          (active: boolean) => (
+            <Button
+              size="md"
+              color="ghost"
+              className={`${active ? "bg-base-content/20" : ""}`}
+              variant="block"
+              text="Profile"
+              textUpperCase={false}
+              contentAlignment="left"
+              renderIcon={() => <FaBed />}
+            />
+          ),
+          (active: boolean) => (
+            <Button
+              size="md"
+              color="ghost"
+              className={`${active ? "bg-base-content/20" : ""}`}
+              variant="block"
+              text="Setting"
+              textUpperCase={false}
+              contentAlignment="left"
+              renderIcon={() => <FaCog />}
+            />
+          ),
+          (active: boolean) => (
+            <Button
+              size="md"
+              color="ghost"
+              className={`${active ? "bg-base-content/20" : ""}`}
+              variant="block"
+              text="Logout"
+              textUpperCase={false}
+              contentAlignment="left"
+              renderIcon={() => <FaDoorOpen />}
+            />
+          ),
+        ]}
       />
+
       <Avatar withRing={false} size="2xl" />
       <Checkbox label="Please Login" color="accent" />
       <InputSelect placeholder="Help me" options={myOptions} defaultSelected={myOptions[0]} />
