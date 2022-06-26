@@ -12,7 +12,7 @@ import {
   MenuPopper,
   ButtonPopper,
 } from "components/element";
-import { FaAdjust, FaCog, FaDoorOpen, FaUser } from "react-icons/fa";
+import { FaCog, FaDoorOpen, FaUser } from "react-icons/fa";
 
 const myOptions = [
   {
@@ -33,15 +33,7 @@ function App() {
       <MenuPopper
         popperClassnames=""
         popperSize="md"
-        renderToggler={() => (
-          <Button
-            size="md"
-            color="primary"
-            variant="normal"
-            text="Hello"
-            renderIcon={() => <FaAdjust />}
-          />
-        )}
+        renderToggler={() => <AvatarButton size="sm" ringColor="primary" />}
         items={[
           {
             text: "profile",

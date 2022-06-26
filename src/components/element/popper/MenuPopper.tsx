@@ -1,6 +1,6 @@
-import React, { ReactElement } from "react";
+import React, { Fragment, ReactElement } from "react";
 import { uniqueId } from "lodash";
-import { Menu } from "@headlessui/react";
+import { Menu, Transition } from "@headlessui/react";
 import { Button } from "../button/Button";
 
 type PopperSize = "xs" | "sm" | "md" | "lg" | "xl";
@@ -29,7 +29,7 @@ type MenuPopperProps = {
   popperSize?: PopperSize;
 };
 
-export const MenuPopper = React.forwardRef((props: MenuPopperProps, ref) => {
+export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
   const { renderToggler, items, popperClassnames, popperSize = "md" } = props;
 
   return (
@@ -44,26 +44,38 @@ export const MenuPopper = React.forwardRef((props: MenuPopperProps, ref) => {
         </Menu.Button>
       </div>
 
-      <Menu.Items
-        className={`absolute z-50 right-0 mt-2 ${PopperSizeClassMap[popperSize]} 
-        origin-top-right bg-base-300 rounded shadow-2xl overflow-auto p-2`}
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
       >
-        {items.map((item: ItemComponent) => (
-          <Menu.Item key={uniqueId()}>
-            {({ active }) => (
-              <button
-                className={`btn btn-md btn-ghost btn-block ${active ? "bg-base-content/20" : ""} 
+        <Menu.Items
+          static
+          className={`absolute z-50 right-0 mt-2 ${PopperSizeClassMap[popperSize]} 
+        origin-top-right bg-base-300 rounded shadow-2xl overflow-auto p-2
+        focus:outline-none
+        `}
+        >
+          {items.map((item: ItemComponent) => (
+            <Menu.Item key={uniqueId()}>
+              {({ active }) => (
+                <button
+                  className={`btn btn-md btn-ghost btn-block ${active ? "bg-base-content/20" : ""} 
                   justify-start gap-2`}
-                onClick={item.onClick}
-              >
-                {item.icon}
-                {item.text}
-              </button>
-            )}
-          </Menu.Item>
-        ))}
-      </Menu.Items>
+                  onClick={item.onClick}
+                >
+                  {item.icon}
+                  {item.text}
+                </button>
+              )}
+            </Menu.Item>
+          ))}
+        </Menu.Items>
+      </Transition>
     </Menu>
   );
-});
-MenuPopper.displayName = "MenuPopper";
+};

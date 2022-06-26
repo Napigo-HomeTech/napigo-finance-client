@@ -43,7 +43,7 @@ const ringColorClassMap = {
 };
 
 const activeRingColorMap = {
-  primary: "active:ring-primary",
+  primary: "active:ring-primary focus:ring-primary",
   secondary: "active:ring-secondary",
   accent: "active:ring-accent",
   success: "active:ring-success",
@@ -69,14 +69,15 @@ export const AvatarButton: React.FC<AvatarProps> = (props) => {
   } = props;
 
   return (
-    <button {...buttonProps} className="btn border-transparent avatar">
+    <button {...buttonProps} className="btn border-transparent avatar" tabIndex={-1}>
       <div
+        tabIndex={0}
         className={`${sizeClassMap[size]} ${
           variantClassMap[variant]
         } ring ring-offset-base-100 ring-offset-2
         ${active ? ringColorClassMap[ringColor] : "hover:ring-base-300"} ${
           activeRingColorMap[ringColor]
-        } ${active ? ringColorClassMap[ringColor] : "ring-base-200"}`}
+        } ${active ? ringColorClassMap[ringColor] : "ring-base-200"} focus:outline-none`}
       >
         <img alt="avatar user" src="https://api.lorem.space/image/face?hash=92048" />
       </div>
