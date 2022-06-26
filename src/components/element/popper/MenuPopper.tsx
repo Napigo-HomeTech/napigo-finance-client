@@ -22,7 +22,7 @@ export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
 
       <Menu.Items
         className={
-          "absolute right-0 mt-2 w-56 origin-top-right bg-base-300 rounded shadow-2xl overflow-auto p-2"
+          "absolute z-50 right-0 mt-2 w-56 origin-top-right bg-base-300 rounded shadow-2xl overflow-auto p-2"
         }
       >
         <Menu.Item>
