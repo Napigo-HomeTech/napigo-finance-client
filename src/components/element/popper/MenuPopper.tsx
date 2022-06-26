@@ -31,10 +31,11 @@ export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
               className={`${active ? "bg-primary" : ""} rounded min-h-[20px] flex items-center p-0`}
             >
               <Button
-                size="md"
+                size="sm"
                 color="ghost"
                 variant="block"
-                text="Hello Item"
+                text="Profile"
+                textUpperCase={false}
                 contentAlignment="left"
                 renderIcon={() => <FaBed />}
               />
@@ -47,10 +48,11 @@ export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
               className={`${active ? "bg-primary" : ""} rounded min-h-[20px] flex items-center p-0`}
             >
               <Button
-                size="md"
+                size="sm"
                 color="ghost"
                 variant="block"
-                text="Hello Item"
+                text="User Settings"
+                textUpperCase={false}
                 contentAlignment="left"
                 renderIcon={() => <FaSalesforce />}
               />

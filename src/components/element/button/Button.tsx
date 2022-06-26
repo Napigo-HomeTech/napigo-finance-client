@@ -59,6 +59,7 @@ type Variant = "square" | "normal" | "block";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
+  textUpperCase?: boolean;
   size?: Sizing;
   color?: Color;
   outline?: boolean;
@@ -71,6 +72,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: React.FC<ButtonProps> = (props) => {
   const {
     text,
+    textUpperCase = true,
     size = "md",
     color = "primary",
     outline = false,
@@ -83,10 +85,12 @@ export const Button: React.FC<ButtonProps> = (props) => {
   } = props;
 
   const classes = useMemo(() => {
-    return `btn gap-2 ${outline ? "btn-outline" : ""} ${ButtonSizeClassMap[size]} ${
-      ButtonColorClassMap[color]
-    } ${ButtonVariantClassMap[variant]} ${ContentAlignMentClassMap[contentAlignment]} ${className}`;
-  }, [outline, size, color, variant, contentAlignment, className]);
+    return `btn gap-2 ${textUpperCase ? "uppercase" : ""} ${outline ? "btn-outline" : ""} ${
+      ButtonSizeClassMap[size]
+    } ${ButtonColorClassMap[color]} ${ButtonVariantClassMap[variant]} ${
+      ContentAlignMentClassMap[contentAlignment]
+    } ${className}`;
+  }, [outline, textUpperCase, size, color, variant, contentAlignment, className]);
 
   return (
     <button {...buttonProps} className={classes}>

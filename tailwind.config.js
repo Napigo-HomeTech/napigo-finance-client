@@ -34,7 +34,7 @@ const lightBaseColors = {
 
 /** */
 const commonVariables = {
-  "--btn-text-case": "uppercase",
+  "--btn-text-case": "normalcase",
   "--rounded-btn": "0.25rem",
 };
 
