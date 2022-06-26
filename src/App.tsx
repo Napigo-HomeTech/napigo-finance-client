@@ -10,8 +10,9 @@ import {
   CurrencyField,
   Toggle,
   MenuPopper,
+  ButtonPopper,
 } from "components/element";
-import { FaAdjust, FaBed, FaCog, FaDoorOpen } from "react-icons/fa";
+import { FaAdjust, FaCog, FaDoorOpen, FaUser } from "react-icons/fa";
 
 const myOptions = [
   {
@@ -31,6 +32,7 @@ function App() {
 
       <MenuPopper
         popperClassnames=""
+        popperSize="md"
         renderToggler={() => (
           <Button
             size="md"
@@ -40,45 +42,26 @@ function App() {
             renderIcon={() => <FaAdjust />}
           />
         )}
-        renderItems={[
-          (active: boolean) => (
-            <Button
-              size="md"
-              color="ghost"
-              className={`${active ? "bg-base-content/20" : ""}`}
-              variant="block"
-              text="Profile"
-              textUpperCase={false}
-              contentAlignment="left"
-              renderIcon={() => <FaBed />}
-            />
-          ),
-          (active: boolean) => (
-            <Button
-              size="md"
-              color="ghost"
-              className={`${active ? "bg-base-content/20" : ""}`}
-              variant="block"
-              text="Setting"
-              textUpperCase={false}
-              contentAlignment="left"
-              renderIcon={() => <FaCog />}
-            />
-          ),
-          (active: boolean) => (
-            <Button
-              size="md"
-              color="ghost"
-              className={`${active ? "bg-base-content/20" : ""}`}
-              variant="block"
-              text="Logout"
-              textUpperCase={false}
-              contentAlignment="left"
-              renderIcon={() => <FaDoorOpen />}
-            />
-          ),
+        items={[
+          {
+            text: "profile",
+            icon: <FaUser />,
+            onClick: (ev: React.MouseEvent) => console.log("hello Profile"),
+          },
+          {
+            text: "Setting",
+            icon: <FaCog />,
+            onClick: (ev: React.MouseEvent) => console.log("hello Setting"),
+          },
+          {
+            text: "Logout",
+            icon: <FaDoorOpen />,
+            onClick: (ev: React.MouseEvent) => console.log("hello Logout"),
+          },
         ]}
       />
+
+      <ButtonPopper />
 
       <Avatar withRing={false} size="2xl" />
       <Checkbox label="Please Login" color="accent" />
