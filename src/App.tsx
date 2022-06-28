@@ -76,7 +76,7 @@ function App() {
         toggleId="id 1"
       />
       <SelectButton defaultText="Hello world" selected={{ value: "", text: "Hanafi" }} />
-      <TextField name="ue" label="Hello Dear" placeholder="Text Me" />
+      <TextField name="ue" type="text" label="Hello Dear" placeholder="Text Me" />
       <CurrencyField name="Amount" label="Total Amount" placeholder="0.00" />
       <Toggle label="Toggle me" color="primary" />
     </div>

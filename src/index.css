@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-// Applying Base style to all Web Component
-@layer base {
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Mulish, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
-// Apply to a specific Component styling
-@layer components {
+input::placeholder {
+  opacity: 0.5;
 }

@@ -42,7 +42,7 @@ export const CurrencyField: React.FC<CurrencyFieldProps> = (props) => {
           {...inputProps}
           id={name}
           type="text"
-          className={`input bg-base-200 input-bordered border-transparent flex flex-1 min-w-[50px]
+          className={`input bg-base-200 input-bordered font-bold text-lg border-transparent flex flex-1 min-w-[50px]
            ${InputSizeClassMap[sizing]}`}
         />
       </label>

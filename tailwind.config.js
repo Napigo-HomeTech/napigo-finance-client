@@ -20,9 +20,11 @@ const moduleColors = {
 /** */
 const darkBaseColors = {
   "modal-backdrop": "rgba(0, 0, 0, 0.6)",
-  "base-100": "#000000",
+  "base-100": "#131415",
   "base-200": "#191A1C",
   "base-300": "#222326",
+  neutral: "#131415",
+  "neutral-focus": "#131415",
 };
 /** */
 const lightBaseColors = {
@@ -30,6 +32,7 @@ const lightBaseColors = {
   "base-100": "#FDFDFD",
   "base-200": "#191A1C",
   "base-300": "#222326",
+  neutral: "#FDFDFD",
 };
 
 /** */
@@ -40,8 +43,8 @@ const commonVariables = {
 
 module.exports = {
   mode: "jit",
-  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  purge: ["./src/**/*.{js,jsx,ts,tsx,css}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,css}"],
   darkMode: "class",
   theme: {
     extend: {},
