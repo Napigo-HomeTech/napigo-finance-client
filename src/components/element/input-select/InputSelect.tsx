@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import { Button } from "../button/Button";
-import { ClickAwayListener } from "../../common";
+import { ArrowNavManager, ClickAwayListener } from "../../common";
 
 type Option = {
   value: string;
@@ -13,6 +13,8 @@ interface InputSelectProps extends React.InputHTMLAttributes<HTMLInputElement> {
   defaultSelected: Option;
   onSelectChange?: (value: Option) => void;
   label?: string;
+  name: string;
+  toggleId: string;
   editable?: boolean;
 }
 /**
@@ -21,33 +23,36 @@ interface InputSelectProps extends React.InputHTMLAttributes<HTMLInputElement> {
  * @returns
  */
 export const InputSelect: React.FC<InputSelectProps> = (props) => {
-  const { options, defaultSelected, onSelectChange, label, editable = true, ...inputProps } = props;
+  const {
+    options,
+    defaultSelected,
+    onSelectChange,
+    label,
+    editable = true,
+    name,
+    toggleId,
+    ...inputProps
+  } = props;
 
   const [open, setOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<Option>(defaultSelected);
-
-  const handleKeydown = (ev: any) => {
-    const key = ev.key;
-
-    if (key === "ArrowDown") {
-      // TODO
-    }
-    if (key === "ArrowUp") {
-      // TODO
-    }
-  };
 
   useCallback(() => {
     onSelectChange?.(selected);
   }, [onSelectChange, selected]);
 
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeydown);
+  const onItemClick = (ev: React.MouseEvent, item: Option) => {
+    if (open) {
+      const el = document.getElementById(toggleId ?? "");
+      el?.focus();
+      setSelected(item);
+      setOpen(false);
+    }
+  };
 
-    return () => {
-      window.removeEventListener("keydown", handleKeydown);
-    };
-  }, [open]);
+  const onToggle = (ev: React.MouseEvent) => {
+    setOpen(!open);
+  };
 
   return (
     <div className={`w-full ${editable ? "" : "pointer-events-none"}`}>
@@ -55,7 +60,7 @@ export const InputSelect: React.FC<InputSelectProps> = (props) => {
         <div className="relative w-[inherit]">
           <div className="form-control">
             {label && (
-              <label className="label">
+              <label className="label" htmlFor={name}>
                 <span className="label-text">{label}</span>
               </label>
             )}
@@ -63,17 +68,19 @@ export const InputSelect: React.FC<InputSelectProps> = (props) => {
             <div className="input-group flex flex-row">
               <input
                 {...inputProps}
+                id={name}
                 type="text"
                 onFocus={() => setOpen(false)}
                 className="input bg-base-200 flex flex-1 min-w-[50px]"
               />
               <Button
-                onClick={() => setOpen(!open)}
+                onClick={onToggle}
                 size="md"
+                id={toggleId}
                 color="primary"
                 text={selected.text}
                 tabIndex={0}
-                type="button"
+                role="menubar"
                 renderIcon={() => (editable ? <FaCaretDown /> : <></>)}
                 iconPosition="right"
               />
@@ -87,24 +94,23 @@ export const InputSelect: React.FC<InputSelectProps> = (props) => {
           p-2`}
           >
             <ul className="list-none m-0 p-0" role="menu">
-              {options.map((item: Option, index) => {
-                return (
-                  <li
-                    data-name="input-select-item"
-                    tabIndex={0}
-                    id={item.value}
-                    key={item.value}
-                    role="menuitem"
-                    onClick={() => {
-                      setSelected(item);
-                      setOpen(false);
-                    }}
-                    className={`btn btn-block btn-ghost active:bg-primary focus:bg-base-content/20 focus:outline-none`}
-                  >
-                    {item.text}
-                  </li>
-                );
-              })}
+              <ArrowNavManager active={open} id={name}>
+                {options.map((item: Option) => {
+                  return (
+                    <li
+                      data-name="input-select-item"
+                      tabIndex={0}
+                      id={item.value}
+                      key={item.value}
+                      role="button"
+                      onClick={(ev: React.MouseEvent) => onItemClick(ev, item)}
+                      className={`btn btn-block btn-ghost active:bg-primary focus:bg-base-content/20 focus:outline-none`}
+                    >
+                      {item.text}
+                    </li>
+                  );
+                })}
+              </ArrowNavManager>
             </ul>
           </div>
         </div>

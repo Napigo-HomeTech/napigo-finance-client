@@ -37,6 +37,7 @@ export const SelectButton: React.FC<SelectButtonProps> = (props) => {
           type="text"
           contentEditable={false}
           value={inputValue}
+          onChange={() => {}}
           className={`input bg-base-200 border-transparent cursor-pointer
            focus:outline-none flex-1 min-w-[50px]`}
         />
