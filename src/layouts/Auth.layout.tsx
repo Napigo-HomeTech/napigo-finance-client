@@ -8,6 +8,7 @@ export const AuthLayout: React.FC = () => {
       className={`container 
        mx-auto 
        h-screen 
+       flex
        flex-row 
        gap-0 
        max-w-[900px]
@@ -22,7 +23,15 @@ export const AuthLayout: React.FC = () => {
       >
         <AuthGreeting />
       </div>
-      <Outlet />
+      <div
+        className={`flex 
+      w-[50%] 
+      h-full 
+      justify-center 
+      items-center`}
+      >
+        <Outlet />
+      </div>
     </div>
   );
 };
