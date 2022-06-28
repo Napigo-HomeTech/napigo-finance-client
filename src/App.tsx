@@ -11,6 +11,9 @@ import {
   Toggle,
   MenuPopper,
   ButtonPopper,
+  NapigoLogo,
+  FinanceLogo,
+  CalendarLogo,
 } from "components/element";
 import { FaCog, FaDoorOpen, FaUser } from "react-icons/fa";
 
@@ -31,6 +34,9 @@ const myOptions = [
 function App() {
   return (
     <div className="flex flex-col gap-4 w-[500px] mx-auto h-auto items-center justify-center  py-20">
+      <NapigoLogo scale={5} />
+      <FinanceLogo scale={5} />
+      <CalendarLogo scale={5} />
       <Button text="Hello World" variant="block" />
       <AvatarButton ringColor="primary" size="sm" />
 
@@ -62,21 +68,27 @@ function App() {
       <Avatar withRing={false} size="2xl" />
       <Checkbox label="Please Login" color="accent" />
       <InputSelect
-        placeholder="Help me"
+        label="Username"
+        placeholder="example@example.com"
         options={myOptions}
         defaultSelected={myOptions[0]}
         name="Amount Select"
         toggleId="id 2"
       />
       <InputSelect
-        placeholder="Help me"
+        label="Password"
+        placeholder="Enter Password"
         options={myOptions}
         defaultSelected={myOptions[0]}
         name="Saa Select"
         toggleId="id 1"
       />
-      <SelectButton defaultText="Hello world" selected={{ value: "", text: "Hanafi" }} />
-      <TextField name="ue" type="text" label="Hello Dear" placeholder="Text Me" />
+      <SelectButton
+        label="Select"
+        defaultText="Hello world"
+        selected={{ value: "", text: "Hanafi" }}
+      />
+      <TextField name="ue" type="text" label="Description" placeholder="I owe My Mother..." />
       <CurrencyField name="Amount" label="Total Amount" placeholder="0.00" />
       <Toggle label="Toggle me" color="primary" />
     </div>

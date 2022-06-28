@@ -9,3 +9,6 @@ export * from "./text-input/CurrencyField";
 export * from "./toggle/Toggle";
 export * from "./popper/MenuPopper";
 export * from "./popper/ButtonPopper";
+export * from "./logo/NapigoLogo";
+export * from "./logo/FinanceLogo";
+export * from "./logo/CalendarLogo";
