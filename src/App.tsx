@@ -33,7 +33,7 @@ const myOptions = [
 ];
 function App() {
   return (
-    <div className="flex flex-col gap-4 w-[500px] mx-auto h-auto items-center justify-center  py-20">
+    <div className="flex flex-col gap-4 w-[400px] mx-auto h-auto items-center justify-center  py-20">
       <NapigoLogo scale={5} />
       <FinanceLogo scale={5} />
       <CalendarLogo scale={5} />
@@ -64,7 +64,7 @@ function App() {
       />
 
       <ButtonPopper renderToggler={() => <Button text="Button popper" variant="normal" />}>
-        <div className="w-[400px] h-[auto] overflow-auto">
+        <div className="w-[400px] h-[400px] overflow-auto">
           <ul className="list-none p-0">
             <li className="p-2 px-0  border-b-[1px] border-base-content/10">
               <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
