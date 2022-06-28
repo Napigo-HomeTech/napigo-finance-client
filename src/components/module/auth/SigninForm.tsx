@@ -22,6 +22,7 @@ export const SigninForm: React.FC = () => {
         name="principal-input"
         autoComplete={"off"}
         spellCheck={false}
+        autoFocus={true}
       />
 
       <TextField
