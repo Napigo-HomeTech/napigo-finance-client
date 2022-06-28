@@ -14,6 +14,7 @@ import {
   NapigoLogo,
   FinanceLogo,
   CalendarLogo,
+  Select,
 } from "components/element";
 import { FaCog, FaDoorOpen, FaUser } from "react-icons/fa";
 
@@ -30,10 +31,14 @@ const myOptions = [
     value: "QUARTERLY",
     text: "Quarterly",
   },
+  {
+    value: "Half",
+    text: "Half Year",
+  },
 ];
 function App() {
   return (
-    <div className="flex flex-col gap-4 w-[400px] mx-auto h-auto items-center justify-center  py-20">
+    <div className="flex flex-col gap-4 w-[300px] mx-auto h-auto items-center justify-center  py-20">
       <NapigoLogo scale={5} />
       <FinanceLogo scale={5} />
       <CalendarLogo scale={5} />
@@ -123,6 +128,16 @@ function App() {
       <TextField name="ue" type="text" label="Description" placeholder="I owe My Mother..." />
       <CurrencyField name="Amount" label="Total Amount" placeholder="0.00" />
       <Toggle label="Toggle me" color="primary" />
+      <TextField name="ue" type="text" label="Description" placeholder="I owe My Mother..." />
+      <Select options={myOptions} name="My Options" label="Select Category" />
+      <InputSelect
+        label="Password"
+        placeholder="Enter Password"
+        options={myOptions}
+        defaultSelected={myOptions[0]}
+        name="Saa Select"
+        toggleId="id 1"
+      />
     </div>
   );
 }

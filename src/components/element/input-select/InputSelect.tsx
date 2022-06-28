@@ -90,7 +90,7 @@ export const InputSelect: React.FC<InputSelectProps> = (props) => {
           <div
             className={`absolute ${
               open ? "inline-flex" : "hidden"
-            } w-[170px] h-auto bg-base-300 shadow mt-[5px] right-0 z-20 rounded
+            } w-[170px] h-auto bg-base-300 shadow-xl border-[0.5px] border-base-content/20 mt-[5px] right-0 z-20 rounded
           p-2`}
           >
             <ul className="list-none m-0 p-0" role="menu">
@@ -104,7 +104,7 @@ export const InputSelect: React.FC<InputSelectProps> = (props) => {
                       key={item.value}
                       role="button"
                       onClick={(ev: React.MouseEvent) => onItemClick(ev, item)}
-                      className={`btn btn-block btn-ghost active:bg-primary focus:bg-base-content/20 focus:outline-none`}
+                      className={`btn btn-block btn-ghost focus:bg-base-content/20 focus:outline-none`}
                     >
                       {item.text}
                     </li>

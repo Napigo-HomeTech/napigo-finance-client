@@ -12,3 +12,4 @@ export * from "./popper/ButtonPopper";
 export * from "./logo/NapigoLogo";
 export * from "./logo/FinanceLogo";
 export * from "./logo/CalendarLogo";
+export * from "./select/Select";
