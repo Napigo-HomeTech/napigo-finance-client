@@ -56,7 +56,7 @@ export const MenuPopper: React.FC<MenuPopperProps> = (props) => {
         <Menu.Items
           static
           className={`absolute z-50 right-0 mt-2 ${PopperSizeClassMap[popperSize]} 
-        origin-top-right bg-base-300 rounded shadow-2xl overflow-auto p-2
+        origin-top-right bg-base-300 rounded shadow overflow-auto p-2
         focus:outline-none
         `}
         >

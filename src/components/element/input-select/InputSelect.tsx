@@ -90,7 +90,7 @@ export const InputSelect: React.FC<InputSelectProps> = (props) => {
           <div
             className={`absolute ${
               open ? "inline-flex" : "hidden"
-            } w-[170px] h-auto bg-base-300 shadow-2xl mt-[5px] right-0 z-20 rounded
+            } w-[170px] h-auto bg-base-300 shadow mt-[5px] right-0 z-20 rounded
           p-2`}
           >
             <ul className="list-none m-0 p-0" role="menu">

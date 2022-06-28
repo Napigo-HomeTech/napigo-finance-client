@@ -63,7 +63,39 @@ function App() {
         ]}
       />
 
-      <ButtonPopper />
+      <ButtonPopper renderToggler={() => <Button text="Button popper" variant="normal" />}>
+        <div className="w-[400px] h-[auto] overflow-auto">
+          <ul className="list-none p-0">
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+            <li className="p-2 px-0  border-b-[1px] border-base-content/10">
+              <Button text="Hello" variant="block" color="ghost" className="py-10 items-center" />
+            </li>
+          </ul>
+        </div>
+      </ButtonPopper>
 
       <Avatar withRing={false} size="2xl" />
       <Checkbox label="Please Login" color="accent" />
