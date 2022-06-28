@@ -15,6 +15,9 @@ import {
   FinanceLogo,
   CalendarLogo,
   Select,
+  NapigoLogoBase,
+  FinanceLogoBase,
+  CalendarLogoBase,
 } from "components/element";
 import { FaCog, FaDoorOpen, FaUser } from "react-icons/fa";
 
@@ -38,10 +41,13 @@ const myOptions = [
 ];
 function App() {
   return (
-    <div className="flex flex-col gap-4 w-[300px] mx-auto h-auto items-center justify-center  py-20">
+    <div className="flex flex-col gap-4 w-[430px] mx-auto h-auto items-center justify-center  py-20">
       <NapigoLogo scale={5} />
+      <NapigoLogoBase scale={5} />
       <FinanceLogo scale={5} />
+      <FinanceLogoBase scale={5} />
       <CalendarLogo scale={5} />
+      <CalendarLogoBase scale={5} />
       <Button text="Hello World" variant="block" />
       <AvatarButton ringColor="primary" size="sm" />
 
@@ -103,7 +109,7 @@ function App() {
       </ButtonPopper>
 
       <Avatar withRing={false} size="2xl" />
-      <Checkbox label="Please Login" color="accent" />
+      <Checkbox label="Please Login" color="base" />
       <InputSelect
         label="Username"
         placeholder="example@example.com"
