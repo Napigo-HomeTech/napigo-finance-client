@@ -67,6 +67,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   iconPosition?: IconPosition;
   variant?: Variant;
   contentAlignment?: ContentAlignment;
+  loading?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
@@ -81,6 +82,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     variant = "normal",
     contentAlignment = "center",
     className,
+    loading = false,
     ...buttonProps
   } = props;
 
@@ -89,8 +91,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
       ButtonSizeClassMap[size]
     } ${ButtonColorClassMap[color]} ${ButtonVariantClassMap[variant]} ${
       ContentAlignMentClassMap[contentAlignment]
-    } ${className}`;
-  }, [outline, textUpperCase, size, color, variant, contentAlignment, className]);
+    } ${className} ${loading ? "loading" : ""}`;
+  }, [outline, textUpperCase, size, color, variant, contentAlignment, loading, className]);
 
   return (
     <button {...buttonProps} className={classes}>

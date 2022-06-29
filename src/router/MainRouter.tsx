@@ -18,8 +18,8 @@ export const MainRouter: React.FC = () => {
           </Route>
         </Route>
 
-        <Route path="user" element={<SecureRouter />}>
-          <Route path=":id" element={<GeneralScreen />} />
+        <Route path="/" element={<SecureRouter />}>
+          <Route path="user" element={<GeneralScreen />} />
         </Route>
 
         <Route path="*" element={<NotFound404Screen />} />

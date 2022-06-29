@@ -52,14 +52,13 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
       <input
         {...inputProps}
         id={name}
-        required={required}
         className={`input bg-base-200 ${InputSizeClassMap[sizing]} ${
           editable ? "" : "pointer-events-none"
         } ${error ? "border-error focus:outline-error" : ""} `}
       />
       {error && errorText && (
         <label className="label">
-          <span className="label-text-alt text-error">Alt label</span>
+          <span className="label-text-alt text-error">{errorText}</span>
         </label>
       )}
     </div>

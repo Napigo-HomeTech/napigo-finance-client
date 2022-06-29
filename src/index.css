@@ -14,3 +14,6 @@ input::placeholder {
 input {
   font-weight: 600;
 }
+.freeze {
+  pointer-events: none;
+}

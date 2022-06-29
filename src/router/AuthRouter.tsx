@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { SupabaseClient } from "services/supabase/init-client";
+import { authClient } from "services/supabase/init-client";
 import { Session } from "@supabase/supabase-js";
 
 type AuthRouterProps = {
@@ -15,7 +15,7 @@ type AuthRouterProps = {
 export const AuthRouter: React.FC<AuthRouterProps> = (props) => {
   const { redirectPath, replace } = props;
 
-  const session: Session | null = SupabaseClient.auth.session();
+  const session: Session | null = authClient.session();
 
   if (session === null) {
     return <Outlet />;
