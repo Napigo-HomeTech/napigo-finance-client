@@ -1,9 +1,8 @@
-import { Button, Checkbox, TextField } from "components/element";
-import React, { useState } from "react";
+import { Button, TextField, PasswordField } from "components/element";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export const SigninForm: React.FC = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();
     const principalEl = document.getElementById("principal-input") as HTMLInputElement;
@@ -24,21 +23,12 @@ export const SigninForm: React.FC = () => {
         spellCheck={false}
         autoFocus={true}
       />
+      <PasswordField name="credential-input" placeholder="Password" />
 
-      <TextField
-        type={showPassword ? "text" : "password"}
-        placeholder="Password"
-        name="credential-input"
-      />
-      <div className="flex flex-row justify-end">
-        <Checkbox
-          label="Show Password"
-          color="base"
-          onChange={(ev) => setShowPassword(ev.target.checked)}
-        />
-      </div>
       <Button variant="block" text="Login" />
-      <Button variant="block" text="Sign up" color="ghost" />
+      <Link to="register">
+        <Button variant="block" text="Sign up" color="ghost" />
+      </Link>
     </form>
   );
 };
