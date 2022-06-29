@@ -5,7 +5,7 @@ import React from "react";
 export const SigninScreen: React.FC = () => {
   return (
     <div className="flex flex-col gap-6 w-[80%]">
-      <p className="text-xl font-normal w-[80%]">{AUTH_FIXTURES.signin_form_title}</p>
+      <p className="text-xl font-normal w-[80%]">{AUTH_FIXTURES.signin.form_title}</p>
       <SigninForm />
     </div>
   );

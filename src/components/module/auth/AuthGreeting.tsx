@@ -16,7 +16,9 @@ export const AuthGreeting: React.FC = () => {
       <div className="mb-4">
         <NapigoLogo scale={10} />
       </div>
-      <p className="w-[90%] text-lg dark:text-white text-base-content">{AUTH_FIXTURES.sub_text}</p>
+      <p className="w-[90%] text-lg dark:text-white text-base-content">
+        {AUTH_FIXTURES.auth_greeting}
+      </p>
     </div>
   );
 };

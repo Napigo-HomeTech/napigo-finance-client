@@ -1,12 +1,11 @@
 import { Button, PasswordField } from "components/element";
 import { TextField } from "components/element/text-input/TextField";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SignUpSchema } from "schemas/signup.schemas";
 import { freezePage } from "utils";
-import { FormState } from "./type";
-// eslint-disable-next-line
-import { authClient } from "../../../services/supabase/init-client";
+import { AuthFormState } from "./type";
+import { authClient } from "../../../services/supabase.services";
 
 /**
  *
@@ -66,8 +65,11 @@ export const RegisterForm: React.FC = () => {
  * Hook applicable for Signup form component
  */
 const useRegisterForm = () => {
-  const [formState, setFormState] = useState<FormState>("idle");
+  const [formState, setFormState] = useState<AuthFormState>("idle");
   const [inputError, setInputError] = useState<{ [k: string]: string }>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   const submit = async (ev: React.FormEvent) => {
     ev.preventDefault();
@@ -105,24 +107,36 @@ const useRegisterForm = () => {
       setFormState("submitting");
       freezePage(true);
 
-      // TODO :
-      // const { user, session, error } = await authClient.signUp(
-      //   {
-      //     email: value[SignupInputIds.email],
-      //     password: value[SignupInputIds.password],
-      //   },
-      //   {
-      //     data: {
-      //       name: value[SignupInputIds.nickname],
-      //     },
-      //   }
-      // );
+      const { user, session, error } = await authClient.signUp(
+        {
+          email: value[SignupInputIds.email],
+          password: value[SignupInputIds.password],
+        },
+        {
+          data: {
+            nickname: value[SignupInputIds.nickname],
+          },
+        }
+      );
       setTimeout(() => {
         freezePage(false);
         setFormState("onerror");
-        // console.log(user);
-        // console.log(session);
-        // console.log(error);
+
+        if (error) {
+          setSubmitError(error.message);
+          setFormState("onerror");
+          return;
+        }
+        // Clear all current session and force user to Login once Email is confirmed
+        if (user && session) {
+          authClient.signOut();
+        }
+
+        navigate("/auth/confirm-email-pending", {
+          state: {
+            fromRegistration: true,
+          },
+        });
       }, 3000);
     }
   };
@@ -131,5 +145,6 @@ const useRegisterForm = () => {
     submit,
     formState,
     inputError,
+    submitError,
   };
 };

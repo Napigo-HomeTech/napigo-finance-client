@@ -1,1 +1,1 @@
-export type FormState = "idle" | "submitting" | "onsucess" | "onerror";
+export type AuthFormState = "idle" | "submitting" | "onsucess" | "onerror";

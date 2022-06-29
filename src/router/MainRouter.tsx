@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { SigninScreen, RegisterScreen } from "../screens/auth";
+import { SigninScreen, RegisterScreen, PendingConfirmEmailScreen } from "../screens/auth";
 import { GeneralScreen, NotFound404Screen } from "screens/misc";
 import { AuthLayout } from "layouts";
 import { AuthRouter } from "./AuthRouter";
@@ -16,6 +16,7 @@ export const MainRouter: React.FC = () => {
             <Route index element={<SigninScreen />} />
             <Route path="register" element={<RegisterScreen />} />
           </Route>
+          <Route path="confirm-email-pending" element={<PendingConfirmEmailScreen />} />
         </Route>
 
         <Route path="/" element={<SecureRouter />}>
