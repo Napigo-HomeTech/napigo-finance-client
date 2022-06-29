@@ -7,14 +7,35 @@ type PasswordFieldProps = {
   placeholder?: string;
   label?: string;
   visibleToggleEnable?: boolean;
+  required?: boolean;
+  error?: boolean;
+  errorText?: string;
 };
 export const PasswordField: React.FC<PasswordFieldProps> = (props) => {
-  const { name, placeholder, label, visibleToggleEnable = true } = props;
+  const {
+    name,
+    placeholder,
+    label,
+    visibleToggleEnable = true,
+    required = false,
+    error,
+    errorText,
+  } = props;
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   if (!visibleToggleEnable) {
-    return <TextField type={"password"} placeholder={placeholder} label={label} name={name} />;
+    return (
+      <TextField
+        type={"password"}
+        required={required}
+        error={error}
+        errorText={errorText}
+        placeholder={placeholder}
+        label={label}
+        name={name}
+      />
+    );
   }
 
   return (
@@ -24,6 +45,9 @@ export const PasswordField: React.FC<PasswordFieldProps> = (props) => {
         placeholder={placeholder}
         label={label}
         name={name}
+        required={required}
+        error={error}
+        errorText={errorText}
       />
       <div className="flex flex-row justify-end">
         <Checkbox

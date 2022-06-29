@@ -1,4 +1,5 @@
 import React from "react";
+import { FaAsterisk } from "react-icons/fa";
 
 const InputSizeClassMap = {
   xs: "input-xs",
@@ -14,6 +15,9 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   sizing?: Sizing;
   label?: string;
   editable?: boolean;
+  error?: boolean;
+  errorText?: string;
+  required?: boolean;
 }
 
 export const TextField: React.FC<TextFieldProps> = (props) => {
@@ -24,22 +28,40 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
     className,
     contentEditable,
     editable = true,
+    error = false,
+    errorText,
+    required = false,
     ...inputProps
   } = props;
+
+  const toDisplayLabelRow = Boolean(label || required);
+
   return (
     <div className="form-control w-full">
-      {label && (
+      {toDisplayLabelRow && (
         <label className="label" htmlFor={name}>
-          <span className="label-text">{label}</span>
+          {label && <span className="label-text">{label}</span>}
+          {required && (
+            <span className="label-text-alt text-error">
+              <FaAsterisk size={7} />
+            </span>
+          )}
         </label>
       )}
+
       <input
         {...inputProps}
         id={name}
+        required={required}
         className={`input bg-base-200 ${InputSizeClassMap[sizing]} ${
           editable ? "" : "pointer-events-none"
-        } `}
+        } ${error ? "border-error focus:outline-error" : ""} `}
       />
+      {error && errorText && (
+        <label className="label">
+          <span className="label-text-alt text-error">Alt label</span>
+        </label>
+      )}
     </div>
   );
 };

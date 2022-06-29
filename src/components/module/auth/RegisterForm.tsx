@@ -28,9 +28,16 @@ export const RegisterForm: React.FC = () => {
         name="principal-input"
         autoComplete={"off"}
         spellCheck={false}
+        required
       />
-      <PasswordField name="password-input" placeholder="Password" visibleToggleEnable={false} />
       <PasswordField
+        name="password-input"
+        placeholder="Password"
+        visibleToggleEnable={false}
+        required
+      />
+      <PasswordField
+        required
         name="password-confirm-input"
         placeholder="Confirm Password"
         visibleToggleEnable={false}
