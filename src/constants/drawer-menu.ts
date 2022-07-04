@@ -9,31 +9,31 @@ export type DrawerNavigationMenuItem = {
 };
 export const DrawerNavigationMenus: DrawerNavigationMenuItem[] = [
   {
-    goto: "/budget",
+    goto: "budget",
     label: "Budget",
     icon: Icons.BudgetIcon,
     index: 0,
   },
   {
-    goto: "/moneycard",
+    goto: "moneycard",
     label: "Money Card",
     icon: Icons.MooneyCardIcon,
     index: 1,
   },
   {
-    goto: "/planner",
+    goto: "planner",
     label: "Planner",
     icon: Icons.PlannerIcon,
     index: 2,
   },
   {
-    goto: "/report",
+    goto: "report",
     label: "Report",
     icon: Icons.ReportIcon,
     index: 3,
   },
   {
-    goto: "/setting",
+    goto: "setting",
     label: "Setting",
     icon: Icons.SettingIcon,
     index: 4,

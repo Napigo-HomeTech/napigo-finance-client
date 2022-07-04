@@ -13,15 +13,6 @@ type DrawerMenuProps = {
 export const DrawerMenu: React.FC<DrawerMenuProps> = ({ collapse }) => {
   const location = useLocation();
 
-  const handleItemClick = (ev: React.MouseEvent<HTMLLIElement>, goto: string) => {
-    const drawerMenu = document.getElementById("draewr-menu");
-    const items = drawerMenu?.querySelectorAll("li[role=menuitem]");
-
-    items!.forEach((item: Element) => {
-      item.classList.remove("active");
-    });
-    ev.currentTarget.classList.add("active");
-  };
   return (
     <ul
       id="drawer-menu"
@@ -39,7 +30,6 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ collapse }) => {
           <Link key={index} to={goto}>
             <li
               role="menuitem"
-              onClick={(e) => handleItemClick(e, goto)}
               className={`
               btn
               btn-outline
