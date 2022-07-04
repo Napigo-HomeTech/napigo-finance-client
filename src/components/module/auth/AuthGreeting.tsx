@@ -1,4 +1,4 @@
-import { NapigoLogo } from "components/element";
+import { FinanceLogo35 as Logo } from "components/element/logo";
 import { AUTH_FIXTURES } from "constants/auth.fixtures";
 import React from "react";
 
@@ -14,7 +14,7 @@ export const AuthGreeting: React.FC = () => {
   `}
     >
       <div className="mb-4">
-        <NapigoLogo scale={10} />
+        <Logo />
       </div>
       <p className="w-[90%] text-lg dark:text-white text-base-content">
         {AUTH_FIXTURES.auth_greeting}

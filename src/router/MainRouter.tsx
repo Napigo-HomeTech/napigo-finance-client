@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { SigninScreen, RegisterScreen, PendingConfirmEmailScreen } from "../screens/auth";
-import { GeneralScreen, NotFound404Screen } from "screens/misc";
-import { AuthLayout } from "layouts";
+import { NotFound404Screen } from "screens/misc";
+import { AuthLayout, UserLayout } from "layouts";
 import { AuthRouter } from "./AuthRouter";
-import { SecureRouter } from "./SecureRouter";
+// import { SecureRouter } from "./SecureRouter";
 
 export const MainRouter: React.FC = () => {
   return (
@@ -18,11 +18,10 @@ export const MainRouter: React.FC = () => {
           </Route>
           <Route path="confirm-email-pending" element={<PendingConfirmEmailScreen />} />
         </Route>
-
-        <Route path="/" element={<SecureRouter />}>
-          <Route path="user" element={<GeneralScreen />} />
+        <Route path="/user" element={<AuthRouter redirectPath="/auth" />}>
+          <Route index element={<UserLayout />} />
         </Route>
-
+        <Route path="/" element={<Navigate to="/user" />} />
         <Route path="*" element={<NotFound404Screen />} />
       </Routes>
     </BrowserRouter>

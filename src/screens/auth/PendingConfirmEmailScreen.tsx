@@ -1,4 +1,4 @@
-import { NapigoBaseLogoShape } from "components/element/logo/NapigoBaseLogoShape";
+import { NapigoLogo40 as Logo } from "components/element/logo";
 import { AUTH_FIXTURES } from "constants/auth.fixtures";
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
@@ -25,7 +25,7 @@ export const PendingConfirmEmailScreen: React.FC = () => {
       `}
       >
         <div className="card bg-base-200 w-[500px] h-[auto] border-[0.5px] border-base-content/20 px-4 py-10 rounded items-center gap-4">
-          <NapigoBaseLogoShape />
+          <Logo />
           <span className="text-xl font-bold">{AUTH_FIXTURES.confirm_pending_email.title}</span>
           <span className="text-sm text-center">{AUTH_FIXTURES.confirm_pending_email.sub}</span>
         </div>
