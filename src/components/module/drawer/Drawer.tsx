@@ -36,7 +36,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
       `}
       >
         <div className="w-full">
-          <LogoSection />
+          <LogoSection collapse={collapse} />
         </div>
         <Toggle defaultChecked onChange={onToggle} />
       </motion.div>
