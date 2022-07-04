@@ -3,10 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const _setMenuItemActiveClassMap = (currentPath: string, itemPath: string) => {
-  return currentPath.includes(itemPath) ? "bg-primary text-base-content" : "";
-};
-
 type DrawerMenuProps = {
   collapse: boolean;
 };
@@ -34,8 +30,8 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ collapse }) => {
               btn
               btn-outline
               text-base-content
-              hover:bg-primary
-              hover:border-primary
+              ${location.pathname.includes(goto) ? "hover:bg-primary" : "hover:bg-base-content/20"} 
+              hover:border-transparent
               hover:text-primary-content
               pl-[20px] 
               min-w-[200px]
@@ -46,7 +42,8 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ collapse }) => {
               justify-start 
               normal-case
               font-normal
-              ${_setMenuItemActiveClassMap(location.pathname, goto)}
+              ${location.pathname.includes(goto) ? "bg-primary" : ""}
+            
             `}
             >
               <Icon />
