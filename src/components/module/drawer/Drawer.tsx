@@ -2,6 +2,7 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Toggle } from "components/element";
 import { LogoSection } from "./LogoSection";
+import { DrawerMenu } from "./DrawerMenu";
 
 const DRAWER_EXPAND_WIDTH = "260px";
 const DRAWER_COLLAPSE_WIDTH = "85px";
@@ -37,6 +38,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
       >
         <div className="w-full">
           <LogoSection collapse={collapse} />
+          <DrawerMenu collapse={collapse} />
         </div>
         <Toggle defaultChecked onChange={onToggle} />
       </motion.div>

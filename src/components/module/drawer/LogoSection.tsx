@@ -11,14 +11,23 @@ export const LogoSection: React.FC<LogoSectionProps> = (props) => {
 
   return (
     <div
-      className="flex  flex-row 
+      className="flex  
+      flex-row 
       items-center 
       justify-center
-      h-[70px]"
+      h-[70px] 
+      border-b-[0.5px] 
+      border-base-content/20
+      mb-2"
     >
       {!collapse && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <FinanceLogo30 />
+          <FinanceLogo30
+            type="button"
+            onClick={() => {
+              alert("heyy");
+            }}
+          />
         </motion.div>
       )}
       {collapse && (
@@ -31,7 +40,12 @@ export const LogoSection: React.FC<LogoSectionProps> = (props) => {
             },
           }}
         >
-          <LogoBase />
+          <LogoBase
+            type="button"
+            onClick={() => {
+              alert("heyy");
+            }}
+          />
         </motion.div>
       )}
     </div>
