@@ -1,5 +1,5 @@
 import { Session } from "@supabase/supabase-js";
-import { authClient } from "./supabase.services";
+import { authClient } from "./supabaseServices";
 
 /**
  *

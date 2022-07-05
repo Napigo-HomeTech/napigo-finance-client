@@ -1,3 +1,3 @@
-export * from "./Signin.screen";
-export * from "./Register.screen";
+export * from "./SigninScreen";
+export * from "./RegisterScreen";
 export * from "./PendingConfirmEmailScreen";

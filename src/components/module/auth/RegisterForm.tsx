@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SignUpSchema } from "schemas/signup.schemas";
 import { freezePage } from "utils";
 import { AuthFormState } from "./type";
-import { authClient } from "../../../services/supabase.services";
+import { authClient } from "../../../services/supabaseServices";
 
 /**
  *

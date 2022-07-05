@@ -1,2 +1,2 @@
-export * from "./General.screen";
-export * from "./NotFound404.screen";
+export * from "./GeneralScreen";
+export * from "./NotFound404Screen";

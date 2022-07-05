@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { authClient } from "services/supabase.services";
+import { authClient } from "services/supabaseServices";
 import { Session } from "@supabase/supabase-js";
 
 type AuthRouterProps = {
