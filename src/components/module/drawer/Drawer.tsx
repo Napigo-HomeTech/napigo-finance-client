@@ -4,15 +4,16 @@ import { Toggle } from "components/element";
 import { LogoSection } from "./LogoSection";
 import { DrawerMenu } from "./DrawerMenu";
 
-const DRAWER_EXPAND_WIDTH = "260px";
-const DRAWER_COLLAPSE_WIDTH = "85px";
-
 type DrawerProps = {
+  /** Width when drawer on expanded layout - format in px */
+  expandWidth?: number;
+  /** Width when drawer on collapse layout - format in px */
+  collapseWidth?: number;
   collapse: boolean;
   onDrawerToggle: (collapse: boolean) => void;
 };
 export const Drawer: React.FC<DrawerProps> = (props) => {
-  const { collapse, onDrawerToggle } = props;
+  const { collapse, onDrawerToggle, expandWidth = 260, collapseWidth = 85 } = props;
 
   const onToggle = (ev: React.ChangeEvent<HTMLInputElement>) => {
     onDrawerToggle(!ev.target.checked);
@@ -21,8 +22,8 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
   return (
     <AnimatePresence initial={false}>
       <motion.div
-        initial={{ width: collapse ? DRAWER_EXPAND_WIDTH : DRAWER_COLLAPSE_WIDTH }}
-        animate={{ width: collapse ? DRAWER_COLLAPSE_WIDTH : DRAWER_EXPAND_WIDTH }}
+        initial={{ width: collapse ? `${expandWidth}px` : `${collapseWidth}px` }}
+        animate={{ width: collapse ? `${collapseWidth}px` : `${expandWidth}px` }}
         transition={{ delay: collapse ? 0.15 : 0 }}
         className={`border-r-[0.5px]
         border-base-content/20 
