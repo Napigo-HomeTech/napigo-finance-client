@@ -5,8 +5,9 @@ import {
   FinanceLogo30,
   FinanceLogoBase30 as LogoBase,
 } from "components/element/logo";
-import { ButtonPopper } from "components/element";
+import { Button, ButtonPopper } from "components/element";
 import { UserMenu } from "./UserMenu";
+import { FaCaretDown } from "react-icons/fa";
 
 type LogoSectionProps = {
   collapse?: boolean;
@@ -26,13 +27,20 @@ export const LogoSection: React.FC<LogoSectionProps> = (props) => {
       mb-2"
     >
       {!collapse && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <motion.div
+          className="flex flex-row items-center justify-between w-full px-[10px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <LogoContainer type="static">
+            <FinanceLogo30 />
+          </LogoContainer>
+
           <ButtonPopper
             popperPosition="left"
             renderToggler={() => (
-              <LogoContainer type="button">
-                <FinanceLogo30 />
-              </LogoContainer>
+              <Button renderIcon={() => <FaCaretDown />} size="md" variant="square" color="ghost" />
             )}
           >
             <UserMenu />
