@@ -6,7 +6,7 @@ import {
   FinanceLogoBase30 as LogoBase,
 } from "components/element/logo";
 import { Button, ButtonPopper } from "components/element";
-import { UserMenu } from "./UserMenu";
+import { UserMenuDropdown } from "./UserMenuDropdown";
 import { FaCaretDown } from "react-icons/fa";
 
 type LogoSectionProps = {
@@ -43,7 +43,7 @@ export const LogoSection: React.FC<LogoSectionProps> = (props) => {
               <Button renderIcon={() => <FaCaretDown />} size="md" variant="square" color="ghost" />
             )}
           >
-            <UserMenu />
+            <UserMenuDropdown />
           </ButtonPopper>
         </motion.div>
       )}
@@ -65,7 +65,7 @@ export const LogoSection: React.FC<LogoSectionProps> = (props) => {
               </LogoContainer>
             )}
           >
-            <UserMenu />
+            <UserMenuDropdown />
           </ButtonPopper>
         </motion.div>
       )}
