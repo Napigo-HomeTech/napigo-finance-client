@@ -1,24 +1,14 @@
-import React, { useCallback } from "react";
-import { LogoProps } from "./LogoConstant";
+import React from "react";
+import { LogoProps } from "./types";
 
 export const FinanceLogoBase30: React.FC<LogoProps> = (props) => {
-  const { type = "static", onClick } = props;
-
-  const handleClick = useCallback(
-    (ev: React.MouseEvent) => {
-      if (type === "button") {
-        onClick?.(ev);
-        return;
-      }
-    },
-    [type, onClick]
-  );
+  const { buttonClass, handleClick } = props;
 
   return (
     <svg
       {...props}
       onClick={handleClick}
-      className={`${type === "button" ? "cursor-pointer" : ""}`}
+      className={`${buttonClass}`}
       width={28}
       height={31}
       fill="none"

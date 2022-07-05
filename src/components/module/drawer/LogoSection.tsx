@@ -1,7 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FinanceLogo30 } from "components/element/logo";
-import { FinanceLogoBase30 as LogoBase } from "components/element/logo";
+import {
+  LogoContainer,
+  FinanceLogo30,
+  FinanceLogoBase30 as LogoBase,
+} from "components/element/logo";
+import { ButtonPopper } from "components/element";
+import { UserMenu } from "./UserMenu";
 
 type LogoSectionProps = {
   collapse?: boolean;
@@ -22,12 +27,16 @@ export const LogoSection: React.FC<LogoSectionProps> = (props) => {
     >
       {!collapse && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <FinanceLogo30
-            type="button"
-            onClick={() => {
-              alert("heyy");
-            }}
-          />
+          <ButtonPopper
+            popperPosition="left"
+            renderToggler={() => (
+              <LogoContainer type="button">
+                <FinanceLogo30 />
+              </LogoContainer>
+            )}
+          >
+            <UserMenu />
+          </ButtonPopper>
         </motion.div>
       )}
       {collapse && (
@@ -40,12 +49,16 @@ export const LogoSection: React.FC<LogoSectionProps> = (props) => {
             },
           }}
         >
-          <LogoBase
-            type="button"
-            onClick={() => {
-              alert("heyy");
-            }}
-          />
+          <ButtonPopper
+            popperPosition="left"
+            renderToggler={() => (
+              <LogoContainer type="button">
+                <LogoBase />
+              </LogoContainer>
+            )}
+          >
+            <UserMenu />
+          </ButtonPopper>
         </motion.div>
       )}
     </div>
